@@ -3,46 +3,32 @@ get '/' do
   erb :index
 end
 
-get '/songs' do
+get '/dymepieces' do
 	@current_user = User.find(session[:user_id]) if session[:user_id]
-  @songs = Song.all
-   # @songs = Song.all.order_by(Upvote.all.song_id.count).desc
-  erb :'songs/index'
+  @dymepieces = Dymepiece.all
+  erb :'dymepieces/browse'
 end
 
-get '/songs/new' do
-	erb :'songs/new'
+get '/dymepieces/new' do
+	erb :'dymepieces/new'
 end
 
-get '/songs/:id' do
-  @song = Song.find params[:id]
-  erb :'songs/show'
+get '/dymepieces/:id' do
+  @dymepiece = Dymepiece.find params[:id]
+  erb :'dymepieces/show'
 end
 
-post '/songs' do
+post '/dymepieces' do
 	@current_user = User.find(session[:user_id]) if session[:user_id]
-  @song = Song.new(
-    title: params[:title],
-    author:  params[:author],
-    url: params[:url],
+  @dymepiece = Dymepiece.new(
+    topic: params[:topic],
     user: @current_user
   )
-  @current_user.songs << @song
-  if @song.save
-    redirect '/songs'
+  if @dymepiece.save
+    redirect '/dymepieces/:id'
   else
-    erb :'songs/new'
+    erb :'dymepiece/new'
   end
-end
-
-post '/upvote/song_id' do
-	@current_user = User.find(session[:user_id]) if session[:user_id]
-	@upvote = Upvote.new(
-		user_id: session[:user_id],
-		song_id: params[:song_id]
-	)
-	@voted_up = true
-	redirect '/songs'
 end
 
 get '/users/signup' do
@@ -79,7 +65,7 @@ post '/users/login' do
 	if @user
 		session[:user_id] = @user.id
 		@current_user = @user
-		redirect '/songs'
+		redirect '/dymepieces'
 	else
 		erb :'users/login'
 	end
