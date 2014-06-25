@@ -1,0 +1,12 @@
+<h3><%= @current_user.username.capitalize %>'s songs</h3>
+<a href="/songs">Back to all songs</a>
+
+<% @current_user.songs.each do |song| %>
+  <div class="song">
+    <h3><a href="/songs/<%= song.id %>"><%= song.title %></a> <small>- <%= song.author %></small></h3>
+    <p>
+     <a href= "<%= song.url %>"><%= song.url %></a>
+    </p>
+  </div>
+<% end %>
+
