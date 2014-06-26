@@ -31,6 +31,23 @@ post '/dymepieces' do
   end
 end
 
+get '/dymepieces/items/new_item' do 
+  erb :'dymepieces/items/new_item'
+end
+
+post '/items' do 
+  @current_user = User.find(session[:user_id]) if session[:user_id]
+  @item = Item.new(
+    img_url: params[:img_url],
+    description: params[:description]
+    )
+  if @item.save
+    redirect '/dymepieces/:id'
+  else
+    erb :'dymepieces/items/new_item'
+  end
+end
+
 get '/users/signup' do
 	erb :'users/signup'
 end
