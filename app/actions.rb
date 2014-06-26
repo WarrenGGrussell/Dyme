@@ -15,6 +15,7 @@ end
 
 get '/dymepieces/:id' do
   @dymepiece = Dymepiece.find params[:id]
+  @items = Item.where(:dymepiece_id == @dymepiece.id)
   erb :'dymepieces/show'
 end
 
@@ -25,7 +26,7 @@ post '/dymepieces' do
     user: @current_user
   )
   if @dymepiece.save
-    redirect '/dymepieces/:id'
+    redirect '/dymepieces/items/new_item'
   else
     erb :'dymepiece/new'
   end
@@ -37,16 +38,19 @@ end
 
 post '/items' do 
   @current_user = User.find(session[:user_id]) if session[:user_id]
+  @current_dymepiece_id = Dymepiece.last.id
   1.upto(10) do |i|
-  	img_url = ("img_url" + i).to_sym
-  	description = ("description" + i).to_sym
+  	img_url = ("img_url" + i.to_s).to_sym
+  	description = ("description" + i.to_s).to_sym
 		item = Item.new(
 	    img_url: params[img_url],
-	    description: params[description]		  	
+	    description: params[description],
+	    user: @current_user,
+	    dymepiece: @current_dymepiece
     )
     item.save()
 	end
- 	redirect '/dymepieces/:id'
+ 	redirect "/dymepieces/#{@current_dymepiece_id}"
 end
 
 get '/users/signup' do

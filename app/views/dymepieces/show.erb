@@ -1,1 +1,16 @@
 <a href="/dymepieces">Browse DymePieces</a>
+
+<h1><%= @dymepiece.topic %></h1>
+
+<% @items.each do |item| %>
+	
+	<h2>
+	  <%= item.description %>
+	</h2>
+
+	<p>
+	  <img src="<%= item.img_url %>">
+	</p>
+
+	<hr/>
+<% end %>
