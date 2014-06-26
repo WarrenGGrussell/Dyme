@@ -1,1 +1,14 @@
 <a href="/dymepieces">Browse DymePieces</a>
+
+<form action='/dymepieces', method='post'>
+
+  <div>
+    <label>DymePiece Topic:</label>
+    <input type="text" name="topic" value="<%= @dymepiece && @dymepiece.topic %>">
+  </div>
+
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+
+</form>
