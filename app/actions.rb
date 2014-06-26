@@ -6,7 +6,7 @@ end
 get '/dymepieces' do
 	@current_user = User.find(session[:user_id]) if session[:user_id]
   @dymepieces = Dymepiece.all
-  erb :'dymepieces/index'
+  erb :'dymepieces/browse'
 end
 
 get '/dymepieces/new' do
