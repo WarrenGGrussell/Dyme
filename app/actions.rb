@@ -37,15 +37,16 @@ end
 
 post '/items' do 
   @current_user = User.find(session[:user_id]) if session[:user_id]
-  @item = Item.new(
-    img_url: params[:img_url],
-    description: params[:description]
+  1.upto(10) do |i|
+  	img_url = ("img_url" + i).to_sym
+  	description = ("description" + i).to_sym
+		item = Item.new(
+	    img_url: params[img_url],
+	    description: params[description]		  	
     )
-  if @item.save
-    redirect '/dymepieces/:id'
-  else
-    erb :'dymepieces/items/new_item'
-  end
+    item.save()
+	end
+ 	redirect '/dymepieces/:id'
 end
 
 get '/users/signup' do

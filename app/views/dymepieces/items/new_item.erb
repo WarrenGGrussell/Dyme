@@ -1,19 +1,28 @@
 <a href="/dymepieces/new">Back</a>
 
+
+
+
 <form action='/items', method='post'>
+
+	<% 1.upto(10) do |i|
+  	img_url = ("img_url" + i.to_s).to_sym
+  	description = ("description" + i.to_s).to_sym %>
 
   <div>
     <label>Description</label>
-    <input type="text" name="description" value="<%= @item && @item.description %>">
+    <input type="text" name="<%= description %>" >
   </div>
 
    <div>
     <label>Image URL</label>
-    <input type="text" name="img_url" value="<%= @item && @item.img_url %>">
+    <input type="text" name="<%= img_url %>">
   </div>
+  <br>
 
-  <div>
+  <% end %>
+
+    <div>
     <input type="submit" value="Submit">
   </div>
-
 </form>
