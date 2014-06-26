@@ -7,6 +7,7 @@ require 'active_support/all'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'email_validator'
+require 'will_paginate'
 
 require 'pry'
 
