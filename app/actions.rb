@@ -14,10 +14,9 @@ get '/users/profile/:id' do
 	@user = User.find(params[:id])
 	if @user
 		@dymepieces = Dymepiece.where(:user_id => @user.id)
-		# puts "\n\n  #{@dymepieces} \n\n\n\n"
 		erb :'users/user_profile'
 	else
-		redirect :'dymepieces/browse'
+		redirect '/dymepieces'
 	end	
 end
 
@@ -25,7 +24,7 @@ post '/dymepieces/delete/:id' do
 	@current_user = User.find(session[:user_id]) if session[:user_id]
 	d = Dymepiece.find(params[:id])
 	d.destroy
-	redirect :"users/#{@current_user.id}"
+	redirect "/users/profile/#{@current_user.id}"
 end
 
 
@@ -40,7 +39,7 @@ get '/dymepieces/:id' do
   	@items = Item.where(:dymepiece_id => @dymepiece.id)
   	erb :'dymepieces/show'
   else
-  	redirect :'dymepieces/browse'
+  	redirect '/dymepieces'
   end
 end
 
