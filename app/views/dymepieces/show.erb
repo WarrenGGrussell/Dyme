@@ -1,5 +1,14 @@
 <a href="/dymepieces">Browse DymePieces</a>
 
+<% if @current_user && @current_user.valid? %>
+	<a href="/dymepieces/new">Make a DymePiece</a>
+	<a href="/users/profile/<%= @current_user.id %>">My DymePieces</a>
+	<a href="/users/session/logged_out">Log out</a>
+	<% else %>
+	<a href="/users/signup">Signup here!</a>
+	<a href="/users/login">Log in</a>
+<% end %>
+
 <h1><%= @dymepiece.topic %></h1>
 
 <% @items.each do |item| %>
@@ -12,6 +21,11 @@
 	<div><img src="<%= item.img_url %>"></div>
 	<a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
 
+	<ul><% item.comments.each do |c| %>
+		<li><%= c.content %></li>
+		 <p><small>Author: <%= User.find(c.user.id).username %></small></p>
+		<% end %></ul>
+
 	<div><form action="/comment/<%= item.id %>", method='post'>
 		<div>
     	<label>Comment</label>
@@ -22,10 +36,6 @@
     	<input type="submit" value="Comment">
   	</div>
 	</form></div>
-
-	<ul><% item.comments.each do |c| %>
-		<li><%= c.content %></li>
-		<% end %></ul>
 
 	<hr/>
 <% end %>

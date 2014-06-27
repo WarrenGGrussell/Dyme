@@ -3,6 +3,14 @@
 <li class="active"><a href="/dymepieces">Browse DymePieces</a></li>
 </ul>
 
+<% if @current_user && @current_user.valid? %>
+	<a href="/dymepieces/new">Make a DymePiece</a>
+	<a href="/users/session/logged_out">Log out</a>
+	<% else %>
+	<a href="/users/signup">Signup here!</a>
+	<a href="/users/login">Log in</a>
+<% end %>
+
 <% @dymepieces.reverse.each do |dymepiece| %>
   <div class="dymepiece">
     <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
