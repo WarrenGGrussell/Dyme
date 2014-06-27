@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625201658) do
+ActiveRecord::Schema.define(version: 20140627212753) do
 
   create_table "comments", force: true do |t|
     t.string   "content"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20140625201658) do
     t.integer  "dymepiece_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "item_id"
   end
 
   create_table "dymepieces", force: true do |t|

@@ -73,12 +73,9 @@ post '/items' do
 	    user: @current_user,
 	    dymepiece: @current_dymepiece
     )
+    item.save()
 	end
-	if item.save()
- 		redirect "/dymepieces/#{@current_dymepiece.id}"
- 	else
- 		erb :'dymepieces/items/new_item'
- 	end
+ 	redirect "/dymepieces/#{@current_dymepiece.id}"
 end
 
 get '/dymepieces/items/:id' do 
@@ -91,13 +88,19 @@ post '/dymepieces/items/:item_id/edit_item' do
   @item.update(description: params[:description],img_url: params[:img_url])
   @item.save
   redirect "/dymepieces/#{@item.dymepiece_id}"
-
-  # item.dymepiece_id"
 end
 
-
-
-
+post '/comment/:id' do
+	@current_user = User.find(session[:user_id]) if session[:user_id]
+	@item = Item.find params[:id]
+	@comment = Comment.new(
+		content: params[:content],
+		user: @current_user,
+		item: @item
+		)
+	@comment.save()
+	redirect "/dymepieces/#{@item.dymepiece_id}"
+end
 
 get '/users/signup' do
 	erb :'users/signup'
@@ -106,11 +109,6 @@ end
 get '/users/login' do
 	erb :'users/login'
 end
-
-# get '/users/:id' do
-# 	@current_user = User.find(session[:user_id]) if session[:user_id]
-# 	erb :'users/user_profile'
-# end
 
 post '/users' do
 	@user = User.new(
