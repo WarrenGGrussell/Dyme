@@ -21,6 +21,14 @@ get '/users/:id' do
 	end	
 end
 
+post '/dymepieces/delete/:id' do
+	@current_user = User.find(session[:user_id]) if session[:user_id]
+	d = Dymepiece.find(params[:id])
+	d.destroy
+	redirect :"users/#{@current_user.id}"
+end
+
+
 get '/dymepieces/new' do
 	erb :'dymepieces/new'
 end

@@ -6,10 +6,9 @@
     <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
   </div>
 
-  <form action='/dymepieces/items/<%= @item.id %>/edit_item', method='post'>
- 
+  <form action='/dymepieces/delete/<%= dymepiece.id %>', method='post'>
     <div>
-    <input type="submit" value="Delete DymePiece">
+    <input type="submit" value="Delete">
   </div>
 </form>
 <% end %>
