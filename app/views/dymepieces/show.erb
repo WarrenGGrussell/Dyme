@@ -23,6 +23,7 @@
 
 	<ul><% item.comments.each do |c| %>
 		<li><%= c.content %></li>
+		 <p><small>Author: <%= User.find(c.user.id).username %></small></p>
 		<% end %></ul>
 
 	<div><form action="/comment/<%= item.id %>", method='post'>
