@@ -3,10 +3,12 @@
 <h1><%= @dymepiece.topic %></h1>
 
 <% @items.each do |item| %>
-	
+	 <% @item_id = item.id %>
 	<h2>
-	  <%= item.description %>
+	  <%= item.description %>       
 	</h2>
+
+  <a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
 
 	<p>
 	  <img src="<%= item.img_url %>">
