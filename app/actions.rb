@@ -34,6 +34,7 @@ get '/dymepieces/new' do
 end
 
 get '/dymepieces/:id' do
+	@current_user = User.find(session[:user_id]) if session[:user_id]
   @dymepiece = Dymepiece.find params[:id]
   if @dymepiece
   	@items = Item.where(:dymepiece_id => @dymepiece.id)
