@@ -9,7 +9,7 @@ get '/dymepieces' do
   erb :'dymepieces/browse'
 end
 
-get '/users/:id' do
+get '/users/profile/:id' do
 	@current_user = User.find(session[:user_id]) if session[:user_id]
 	@user = User.find(params[:id])
 	if @user
