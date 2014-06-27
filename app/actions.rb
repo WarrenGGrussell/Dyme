@@ -15,7 +15,7 @@ end
 
 get '/dymepieces/:id' do
   @dymepiece = Dymepiece.find params[:id]
-  @items = Item.where(:dymepiece_id == @dymepiece.id)
+  @items = Item.where(:dymepiece_id => @dymepiece.id)
 
   erb :'dymepieces/show'
 end
@@ -27,19 +27,20 @@ post '/dymepieces' do
     user: @current_user
   )
   if @dymepiece.save
-    redirect '/dymepieces/items/new_item'
+    redirect "/dymepieces/#{@dymepiece.id}/items/new_item"
   else
     erb :'dymepiece/new'
   end
 end
 
-get '/dymepieces/items/new_item' do 
+get "/dymepieces/:dymepiece_id/items/new_item" do 
+  @dymepiece = Dymepiece.find params[:dymepiece_id]
   erb :'dymepieces/items/new_item'
 end
 
 post '/items' do 
   @current_user = User.find(session[:user_id]) if session[:user_id]
-  @current_dymepiece = Dymepiece.where(:user_id == @current_user.id)
+  @current_dymepiece = Dymepiece.find(params[:dymepiece_id])
   1.upto(10) do |i|
   	img_url = ("img_url" + i.to_s).to_sym
   	description = ("description" + i.to_s).to_sym
@@ -60,10 +61,14 @@ get '/dymepieces/items/:id' do
 end
 
 post '/dymepieces/items/:item_id/edit_item' do
-  @item = Item.find_by params[:item_id]
+  @item = Item.find params[:item_id]
+  puts "\n\n" + @item.dymepiece.inspect + "\n\n\n\n"
+
   @item.update(description: params[:description],img_url: params[:img_url])
   @item.save
-  redirect "/dymepieces/#{@item.dymepiece.id}"
+  redirect "/dymepieces/#{@item.dymepiece_id}"
+
+  # item.dymepiece_id"
 end
 
 

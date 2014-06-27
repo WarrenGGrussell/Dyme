@@ -8,13 +8,14 @@
   	description = ("description" + i.to_s).to_sym %>
 
   <div>
-    <label>Description</label>
-    <input type="text" value="<%= description %>" >
-  </div>
 
+    <label>Description</label>
+    <input type="text" name="description" value="<%= %>" >
+  </div>
+  <input type="hidden" name="dymepiece_id" value="<%=@dymepiece.id%>">
    <div>
     <label>Image URL</label>
-    <input type="text" value="<%= img_url %>">
+    <input type="text" name="img_url" value="<%= img_url %>">
   </div>
   <br>
 
