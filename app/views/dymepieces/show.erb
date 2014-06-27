@@ -4,15 +4,24 @@
 
 <% @items.each do |item| %>
 	 <% @item_id = item.id %>
+	
 	<h2>
 	  <%= item.description %>       
 	</h2>
 
-  <a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
+	<div><img src="<%= item.img_url %>"></div>
 
-	<p>
-	  <img src="<%= item.img_url %>">
-	</p>
+	<div><form action="/comment/<%= item.id %>", method='post'>
+		<div>
+    	<label>Comment</label>
+    	<input type="text" name="comment">
+  	</div>
 
+    <div>
+    	<input type="submit" value="Comment">
+  	</div>
+	</form></div>
+	<div><p><%= item.comment.content %></p></div>
+	<a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
 	<hr/>
 <% end %>
