@@ -16,6 +16,7 @@ end
 get '/dymepieces/:id' do
   @dymepiece = Dymepiece.find params[:id]
   @items = Item.where(:dymepiece_id == @dymepiece.id)
+
   erb :'dymepieces/show'
 end
 
@@ -38,7 +39,7 @@ end
 
 post '/items' do 
   @current_user = User.find(session[:user_id]) if session[:user_id]
-  @current_dymepiece_id = Dymepiece.last.id
+  @current_dymepiece = Dymepiece.where(:user_id == @current_user.id)
   1.upto(10) do |i|
   	img_url = ("img_url" + i.to_s).to_sym
   	description = ("description" + i.to_s).to_sym
@@ -50,8 +51,24 @@ post '/items' do
     )
     item.save()
 	end
- 	redirect "/dymepieces/#{@current_dymepiece_id}"
+ 	redirect "/dymepieces/#{@current_dymepiece.id}"
 end
+
+get '/dymepieces/items/:id' do 
+  @item = Item.find params[:id]
+  erb :'dymepieces/items/edit_item'
+end
+
+post '/dymepieces/items/:item_id/edit_item' do
+  @item = Item.find_by params[:item_id]
+  @item.update(description: params[:description],img_url: params[:img_url])
+  @item.save
+  redirect "/dymepieces/#{@item.dymepiece.id}"
+end
+
+
+
+
 
 get '/users/signup' do
 	erb :'users/signup'
@@ -80,10 +97,10 @@ post '/users' do
 end
 
 post '/users/login' do
-	@user = User.where(
+	@user = User.find_by(
 		email: params[:email],
 		password: params[:password]
-	).first
+	)
 	if @user
 		session[:user_id] = @user.id
 		@current_user = @user
