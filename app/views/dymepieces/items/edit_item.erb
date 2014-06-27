@@ -1,0 +1,20 @@
+<a href="/dymepieces/new">Back</a>
+
+
+<form action='/dymepieces/items/<%= @item.id %>/edit_item', method='post'>
+  <div>
+    <label>Description</label>
+    <input type="text" name="description" value="<%= @item.description %>" >
+  </div>
+  <div>
+    <label>Image URL</label>
+    <input type="text" name="img_url" value="<%= @item.img_url %>">
+  </div>
+  <br>
+    <div>
+    <input type="submit" value="Submit">
+  </div>
+</form>
+
+
+
