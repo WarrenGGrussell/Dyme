@@ -10,18 +10,22 @@
 	</h2>
 
 	<div><img src="<%= item.img_url %>"></div>
+	<a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
 
 	<div><form action="/comment/<%= item.id %>", method='post'>
 		<div>
     	<label>Comment</label>
-    	<input type="text" name="comment">
+    	<input type="text" name="content">
   	</div>
 
     <div>
     	<input type="submit" value="Comment">
   	</div>
 	</form></div>
-	<div><p><%= item.comment.content %></p></div>
-	<a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
+
+	<ul><% item.comments.each do |c| %>
+		<li><%= c.content %></li>
+		<% end %></ul>
+
 	<hr/>
 <% end %>
