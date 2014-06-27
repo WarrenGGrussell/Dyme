@@ -1,5 +1,7 @@
 <h3><%= @current_user.username.capitalize %>'s DymePieces</h3>
-<a href="/dymepieces">Browse DymePieces</a>
+<ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="/dymepieces">Browse DymePieces</a></li>
+</ul>
 
 <% if @current_user && @current_user.valid? %>
 	<a href="/dymepieces/new">Make a DymePiece</a>
