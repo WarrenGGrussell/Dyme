@@ -1,4 +1,15 @@
 <h3><%= @current_user.username.capitalize %>'s DymePieces</h3>
 <a href="/dymepieces">Browse DymePieces</a>
 
+<% @dymepieces.reverse.each do |dymepiece| %>
+  <div class="dymepiece">
+    <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
+  </div>
 
+  <form action='/dymepieces/items/<%= @item.id %>/edit_item', method='post'>
+ 
+    <div>
+    <input type="submit" value="Delete DymePiece">
+  </div>
+</form>
+<% end %>
