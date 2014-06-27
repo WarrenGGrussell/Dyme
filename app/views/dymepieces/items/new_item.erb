@@ -4,23 +4,23 @@
 <form action='/items', method='post'>
 
 	<% 1.upto(10) do |i|
-  	img_url = ("img_url" + i.to_s).to_sym
-  	description = ("description" + i.to_s).to_sym %>
+  	img_url = ("img_url" + i.to_s)
+  	description = ("description" + i.to_s) %>
 
   <div>
 
     <label>Description</label>
-    <input type="text" name="description" value="<%= %>" >
+    <input type="text" name="<%= description %>" value="<%= description %>" >
   </div>
-  <input type="hidden" name="dymepiece_id" value="<%=@dymepiece.id%>">
+  
    <div>
     <label>Image URL</label>
-    <input type="text" name="img_url" value="<%= img_url %>">
+    <input type="text" name="<%= img_url %>" value="<%= img_url %>">
   </div>
   <br>
 
   <% end %>
-
+    <input type="hidden" name="dymepiece_id" value="<%=@dymepiece.id%>">
     <div>
     <input type="submit" value="Submit">
   </div>

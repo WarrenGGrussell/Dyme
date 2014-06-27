@@ -8,3 +8,10 @@
 	<a href="/users/login">Log in</a>
 <% end %>
 
+<% @dymepieces.reverse.each do |dymepiece| %>
+  <div class="dymepiece">
+    <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
+
+ 	  <p><small>Uploaded by: <%= User.find(dymepiece.user.id).username %></small></p>
+  </div>
+<% end %>
