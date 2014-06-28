@@ -25,7 +25,7 @@
 	</h2>
 
 	<div><img src="<%= item.img_url %>" width="80%" onerror="this.style.display='none'"></div>
-	<h3><span class="label label-danger"><a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a></span></h3>
+	<h3><a href="/dymepieces/items/<%= @item_id.to_s %>" class="btn btn-primary btn-lg" role="button">Edit Item</a></span></h3>
 
 	<ul><% item.comments.each do |c| %>
 		<li><h4><%= c.content %></h4></li>
