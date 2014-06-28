@@ -22,7 +22,7 @@
 
   <form action='/dymepieces/delete/<%= dymepiece.id %>', method='post'>
     <div>
-    <input type="submit" value="Delete">
+    <% if @current_user.id == dymepiece.user.id %><input type="submit" value="Delete"><% end %>
   </div>
 </form>
 <% end %></div>
