@@ -5,19 +5,24 @@
 	<p><a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a></p>
 	<p><a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a></p>
 	<p><a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a></p>
-</div>
 
-   <h4><span class="label label-success"><a href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></span></h4>
+
+   <h2><span class="label label-success"><a href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></span></h2>
   
 	<% else %>
-	<a href="/users/signup">Signup here!</a>
-	<a href="/users/login">Log in</a>
+	<p><a href="/users/signup" class="btn btn-primary btn-lg" role="button">Signup here!</a></p>
+	<p><a href="/users/login" class="btn btn-primary btn-lg" role="button">Log in</a></p>
+</div>
 <% end %>
-
+</div>
+<div class="jumbotron">
+  <h2>DymePieces Made</h2>
 <% @dymepieces.reverse.each do |dymepiece| %>
   <div class="dymepiece">
-    <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
+    <h3><span class="label label-info"><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></span></h3>
 
  	  <p><small>Uploaded by: <%= User.find(dymepiece.user.id).username %></small></p>
   </div>
+
 <% end %>
+</div>
