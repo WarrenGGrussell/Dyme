@@ -2,3 +2,21 @@
   width:20%;
   margin: 0 auto;
 }
+
+.jumbotron#menu {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.jumbotron {
+  width:400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.jumbotron#edit {
+  width:600px;
+  margin-right: auto;
+  margin-left: auto;
+}
