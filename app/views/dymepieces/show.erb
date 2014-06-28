@@ -1,15 +1,15 @@
-<a href="/dymepieces">Browse DymePieces</a>
+<h3><span class="label label-warning"><a href="/dymepieces">Browse DymePieces</a></span>
 
 <% if @current_user && @current_user.valid? %>
-	<a href="/dymepieces/new">Make a DymePiece</a>
-	<a href="/users/profile/<%= @current_user.id %>">My DymePieces</a>
-	<a href="/users/session/logged_out">Log out</a>
+	<span class="label label-warning"><a href="/dymepieces/new">Make a DymePiece</a></span>
+	<span class="label label-warning"><a href="/users/profile/<%= @current_user.id %>">My DymePieces</a></span>
+	<span class="label label-warning"><a href="/users/session/logged_out">Log out</a></span>
 	<% else %>
 	<a href="/users/signup">Signup here!</a>
 	<a href="/users/login">Log in</a>
 <% end %>
 
-<a href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a>
+<span class="label label-success"><a href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></span></h3>
 
 <h1><%= @dymepiece.topic %></h1>
 
@@ -21,7 +21,7 @@
 	</h2>
 
 	<div><img src="<%= item.img_url %>"></div>
-	<a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a>
+	<h3><span class="label label-danger"><a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a></span></h3>
 
 	<ul><% item.comments.each do |c| %>
 		<li><%= c.content %></li>

@@ -1,11 +1,12 @@
 <h3><%= @current_user.username.capitalize %>'s DymePieces</h3>
-<ul class="nav nav-pills nav-stacked">
-<li class="active"><a href="/dymepieces">Browse DymePieces</a></li>
-</ul>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="/dymepieces">Browse DymePieces</a></li>
+
 
 <% if @current_user && @current_user.valid? %>
-	<a href="/dymepieces/new">Make a DymePiece</a>
-	<a href="/users/session/logged_out">Log out</a>
+	<li><a href="/dymepieces/new">Make a DymePiece</a></li>
+	<li><a href="/users/session/logged_out">Log out</a></li>
+  </ul>
 	<% else %>
 	<span class="label label-success">
     <a href="/users/signup">Signup here!</a>
