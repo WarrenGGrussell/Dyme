@@ -99,7 +99,7 @@ post '/comment/:id' do
 		user: @current_user,
 		item: @item
 		)
-	@comment.save()
+	@comment.save() if @current_user
 	redirect "/dymepieces/#{@item.dymepiece_id}"
 end
 
