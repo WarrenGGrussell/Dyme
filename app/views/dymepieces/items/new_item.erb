@@ -1,6 +1,8 @@
-<a href="/dymepieces/new">Back</a>
+<div class="jumbotron" id="menu">
+<h3><%= @dymepiece.topic %></h3>
+<h3><a class="label label-success" href="/dymepieces/new">Edit Topic</a></h3></div>
 
-
+<div class="jumbotron" id="edit">
 <form action='/items', method='post'>
 
 	<% 1.upto(10) do |i|
@@ -8,14 +10,13 @@
   	description = ("description" + i.to_s) %>
 
   <div>
-
-    <label>Description</label>
-    <input type="text" name="<%= description %>" value="<%= description %>" >
+    <label>Describe it:</label>
+    <input type="text" name="<%= description %>" size="60">
   </div>
   
    <div>
-    <label>Image URL</label>
-    <input type="text" name="<%= img_url %>" value="<%= img_url %>">
+    <label>Image URL:</label>
+    <input type="text" name="<%= img_url %>" size="60">
   </div>
   <br>
 
@@ -24,4 +25,4 @@
     <div>
     <input type="submit" value="Submit">
   </div>
-</form>
+</form></div>

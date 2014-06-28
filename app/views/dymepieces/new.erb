@@ -1,10 +1,9 @@
-<a href="/dymepieces">Browse DymePieces</a>
-
+<div class="jumbotron" id="edit">
 <form action='/dymepieces', method='post'>
 
   <div>
     <label>DymePiece Topic:</label>
-    <input type="text" name="topic" value="<%= @dymepiece && @dymepiece.topic %>">
+    <input type="text" name="topic" size="60" value="<%= @dymepiece && @dymepiece.topic %>">
   </div>
 
   <div>
@@ -12,3 +11,4 @@
   </div>
 
 </form>
+</div>
