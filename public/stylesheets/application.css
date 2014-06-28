@@ -2,3 +2,9 @@
   width:20%;
   margin: 0 auto;
 }
+
+.jumbotron {
+  width:300px;
+  margin-left: auto;
+  margin-right: auto;
+}
