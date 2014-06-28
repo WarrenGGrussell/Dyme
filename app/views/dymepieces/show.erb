@@ -1,6 +1,7 @@
 <div class="jumbotron" id="menu">
 <h1><%= @dymepiece.topic %></h1>
 <p><a href="/dymepieces" class="btn btn-primary btn-lg" role="button">Browse DymePieces</a>
+<a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a>
 
 <% if @current_user && @current_user.valid? %>
 	<a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a>
