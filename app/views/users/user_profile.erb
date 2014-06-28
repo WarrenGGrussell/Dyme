@@ -7,8 +7,12 @@
 	<a href="/dymepieces/new">Make a DymePiece</a>
 	<a href="/users/session/logged_out">Log out</a>
 	<% else %>
-	<a href="/users/signup">Signup here!</a>
-	<a href="/users/login">Log in</a>
+	<span class="label label-success">
+    <a href="/users/signup">Signup here!</a>
+  </span>
+  <span class="label label-success">
+	 <a href="/users/login">Log in</a>
+  </span>
 <% end %>
 
 <% @dymepieces.reverse.each do |dymepiece| %>

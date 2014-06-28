@@ -1,10 +1,11 @@
 <h1>Dyme</h1>
-<a href="/dymepieces">Browse DymePieces</a>
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="/dymepieces">Browse DymePieces</a></li>
 <% if @current_user && @current_user.valid? %>
 	<a href="/dymepieces/new">Make a DymePiece</a>
 	<a href="/users/profile/<%= @current_user.id %>">My DymePieces</a>
 	<a href="/users/session/logged_out">Log out</a>
 	<% else %>
-	<a href="/users/signup">Signup here!</a>
-	<a href="/users/login">Log in</a>
+	<li><a href="/users/signup">Signup here!</a></li>
+	<li><a href="/users/login">Log in</a></li></ul>
 <% end %>
