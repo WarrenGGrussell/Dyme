@@ -1,13 +1,12 @@
-<div class="jumbotron">
+<div class="jumbotron" id="menu">
 <h1>Dyme</h1>
-  <!-- <ul class="nav nav-pills nav-stacked"> -->
-    <!--<li class="active">-->
-    <p><a href="/dymepieces" class="btn btn-primary btn-lg" role="button">Browse DymePieces</a></p>
+  <p>Create, view, share, and comment on custom Top 10 lists called DymePieces</p>
+    <p><a href="/dymepieces" class="btn btn-primary btn-lg" role="button">Browse DymePieces</a>
 <% if @current_user && @current_user.valid? %>
-	<p><a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a></p>
-	<p><a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a></p>
-	<p><a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a></p>
+	<a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a>
+	<a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a>
+	<a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a>
 	<% else %>
-	<p><a href="/users/signup" class="btn btn-primary btn-lg" role="button">Signup here!</a></p>
-	<p><a href="/users/login" class="btn btn-primary btn-lg" role="button">Log in</a></p>
+	<a href="/users/signup" class="btn btn-primary btn-lg" role="button">Signup here!</a>
+	<a href="/users/login" class="btn btn-primary btn-lg" role="button">Log in</a></p>
 <% end %></div>
