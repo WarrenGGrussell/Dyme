@@ -1,17 +1,20 @@
-<h3><span class="label label-warning"><a href="/dymepieces">Browse DymePieces</a></span>
+<div class="jumbotron" id="menu">
+<h2><%= @dymepiece.topic %></h2>
+<p><a href="/dymepieces" class="btn btn-primary btn-lg" role="button">Browse DymePieces</a>
 
 <% if @current_user && @current_user.valid? %>
-	<span class="label label-warning"><a href="/dymepieces/new">Make a DymePiece</a></span>
-	<span class="label label-warning"><a href="/users/profile/<%= @current_user.id %>">My DymePieces</a></span>
-	<span class="label label-warning"><a href="/users/session/logged_out">Log out</a></span>
+	<a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a>
+	<a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a>
 	<% else %>
-	<a href="/users/signup">Signup here!</a>
-	<a href="/users/login">Log in</a>
+	<a href="/users/signup" class="btn btn-primary btn-lg" role="button">Signup here!</a>
+	<a href="/users/login" class="btn btn-primary btn-lg" role="button">Log in</a>
 <% end %>
 
-<span class="label label-success"><a href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></span></h3>
+<a class="label label-success" href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></p>
 
-<h1><%= @dymepiece.topic %></h1>
+
+</div>
+
 
 <% @items.each do |item| %>
 	 <% @item_id = item.id %>
@@ -31,7 +34,7 @@
 	<div><form action="/comment/<%= item.id %>", method='post'>
 		<div>
     	<label>Comment</label>
-    	<input type="text" name="content">
+    	<input type="text" name="content" size="60">
   	</div>
 
     <div>

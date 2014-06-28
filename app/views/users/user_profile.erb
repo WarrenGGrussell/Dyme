@@ -1,6 +1,6 @@
 <div class="jumbotron" id="menu">
 <% if @current_user && @current_user.valid? %>
-  <h3><%= @user.username %>'s DymePieces</h3>
+  <h2><%= @user.username %>'s DymePieces</h2>
   <p><a href="/dymepieces" class="btn btn-primary btn-lg">Browse DymePieces</a>
   <a href="/users/profile/<%= @current_user.id %>" class="btn btn-primary btn-lg" role="button">My DymePieces</a>
   <a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a>
