@@ -28,7 +28,7 @@
 	<h3><span class="label label-danger"><a href="/dymepieces/items/<%= @item_id.to_s %>">EDIT</a></span></h3>
 
 	<ul><% item.comments.each do |c| %>
-		<li><%= c.content %></li>
+		<li><h4><%= c.content %></h4></li>
 		 <p><small>Author: <%= User.find(c.user.id).username %></small></p>
 		<% end %></ul>
 
