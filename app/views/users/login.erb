@@ -1,4 +1,6 @@
-  <% if @user && @user.errors.any? %>
+<div class="jumbotron" id="edit"><p>
+<h3>Login</h3>
+<% if @user && @user.errors.any? %>
   <div>
     <strong>Some issues with your info, please fix them:</strong>
     <ul>
@@ -12,14 +14,14 @@
 <form action='/users/login', method='post'>
   <div>
     <label>Email:</label>
-    <input type="text" name="email" value="<%= @user && @user.email %>">
+    <input type="text" name="email" size="60" value="<%= @user && @user.email %>">
   </div>
   <div>
     <label>Password:</label>
-    <input type="password" name="password" value="<%= @user && @user.password %>">
+    <input type="password" name="password" size="55" value="<%= @user && @user.password %>">
   </div>
   <div>
     <input type="submit" value="Submit">
   </div>
 
-</form>
+</form></p></div>
