@@ -3,6 +3,13 @@
   margin: 0 auto;
 }
 
+.jumbotron#menu {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .jumbotron {
   width:400px;
   margin-left: auto;
