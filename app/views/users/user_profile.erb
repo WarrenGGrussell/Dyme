@@ -3,9 +3,9 @@
 <% if @current_user && @current_user.valid? %>
   <p><a href="/dymepieces" class="btn btn-primary btn-lg">Browse DymePieces</a>
   <a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a>
-  <a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a>
+  <a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a></p>
 
-   <a style="strong" class="label label-success" href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></p>
+   <p><a style="strong" class="label label-success" href="mailto:?subject=You have been invited to Dyme&body=Signup for an account on Dyme and checkout some of my top 10 favourite things (we call these lists DymePieces). You can view tons of other DymePieces, comment on friends' choices, and create your own DymePieces. Give it a whirl at www.Dyme.com">Invite a friend</a></p>
   
   <% else %>
   <p><a href="/users/signup" class="btn btn-primary btn-lg" role="button">Signup here!</a>
