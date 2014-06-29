@@ -20,7 +20,7 @@
   <h2>Recent DymePieces</h2>
 <% @dymepieces.reverse.each do |dymepiece| %>
   <div class="dymepiece">
-    <h3><span class="label label-info"><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></span></h3>
+    <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
 
  	  <p><small>Uploaded by: <%= User.find(dymepiece.user.id).username %></small></p>
   </div>
