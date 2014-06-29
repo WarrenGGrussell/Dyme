@@ -23,7 +23,7 @@
     <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
 
  	  <p><small>Uploaded by: <a href="/users/profile/<%= User.find(dymepiece.user).id %>"><%= User.find(dymepiece.user.id).username %></small></a></p>
- 	  <p><small><%= dymepiece.created_at %></small></p>
+ 	  <p><small><%= dymepiece.created_at.strftime("%F at %I:%M%p") %></small></p>
   </div>
 
 <% end %>
