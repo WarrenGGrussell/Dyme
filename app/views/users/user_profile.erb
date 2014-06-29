@@ -18,7 +18,7 @@
 <% @dymepieces.reverse.each do |dymepiece| %>
   <div class="dymepiece">
     <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
-    <p><small>Uploaded <%= dymepiece.created_at %></small></p>
+    <p><small>Uploaded <%= dymepiece.created_at.strftime("%F at %I:%M%p ") %></small></p>
   </div>
 
   <form action='/dymepieces/delete/<%= dymepiece.id %>', method='post'>
