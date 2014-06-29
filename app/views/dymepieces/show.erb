@@ -25,7 +25,7 @@
 	</h2>
 
 	<div><img src="<%= item.img_url %>" width="80%" onerror="this.style.display='none'"></div>
-	<h3><a href="/dymepieces/items/<%= @item_id.to_s %>" class="btn btn-primary btn-lg" role="button">Edit Item</a></h3>
+	<% if @current_user && @current_user.id == item.user.id %><h3><a href="/dymepieces/items/<%= @item_id.to_s %>" class="btn btn-primary btn-lg" role="button">Edit Item</a></h3><% end %>
 
 	<ul><% item.comments.each do |c| %>
 		<li><h4><%= c.content %></h4></li>
