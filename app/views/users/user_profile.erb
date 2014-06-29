@@ -1,6 +1,6 @@
 <div class="jumbotron" id="menu">
+<h2><%= @user.username %>'s DymePieces</h2>
 <% if @current_user && @current_user.valid? %>
-  <h2><%= @user.username %>'s DymePieces</h2>
   <p><a href="/dymepieces" class="btn btn-primary btn-lg">Browse DymePieces</a>
   <a href="/dymepieces/new" class="btn btn-primary btn-lg" role="button">Make a DymePiece</a>
   <a href="/users/session/logged_out" class="btn btn-primary btn-lg" role="button">Log out</a>
@@ -18,11 +18,12 @@
 <% @dymepieces.reverse.each do |dymepiece| %>
   <div class="dymepiece">
     <h3><a href="/dymepieces/<%= dymepiece.id %>"><%= dymepiece.topic %></a></h3>
+    <p><small>Uploaded <%= dymepiece.created_at %></small></p>
   </div>
 
   <form action='/dymepieces/delete/<%= dymepiece.id %>', method='post'>
     <div>
-    <% if @current_user.id == dymepiece.user.id %><input type="submit" value="Delete"><% end %>
+    <% if @current_user && @current_user.id == dymepiece.user.id %><input type="submit" value="Delete"><% end %>
   </div>
 </form>
 <% end %></div>
